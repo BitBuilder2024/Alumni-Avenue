@@ -47,7 +47,7 @@ Please adhere to the coding standards and guidlines provided in the project docu
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [Inserrt License Here] (LICENSE) file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE] (LICENSE) file for details.
 
 ## Acknowledgements
 
