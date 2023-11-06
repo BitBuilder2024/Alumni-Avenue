@@ -33,7 +33,7 @@ Contributions to the Alumni Avenue project are currently limited to project team
    - **Branch Creation**: Create a new branch for your feature or fix.
    - **Development**: Write your code and commit changes with meaningful commit messages.
    - **Push Changes**: Push your branch to the repository.
-   - ** Pull Request**: Create a pull request and request a review from a project maintainer.
+   - **Pull Request**: Create a pull request and request a review from a project maintainer.
 
 Please adhere to the coding standards and guidlines provided in the project documentation.
 
