@@ -1,17 +1,44 @@
 import React from 'react';
 import './App.css';
-import SignUp from './SignUp'; // Adjust this import path to where your SignUp component is located
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* Include the SignUp component here */}
-        <SignUp />
+        <form className="signup-form">
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-input"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-input"
+              placeholder="Confirm Email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              className="form-input"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="form-button">
+              Sign Up
+            </button>
+          </div>
+        </form>
       </header>
     </div>
   );
 }
 
 export default App;
-
