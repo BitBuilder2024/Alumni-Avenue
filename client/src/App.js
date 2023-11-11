@@ -1,43 +1,21 @@
+// App.js
 import React from 'react';
 import './App.css';
+// import SignUpForm from './Forms/SignUpForm';
+import SignUpIn from './Forms/SignIn';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import SignUpForm from './Forms/SignUpForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <form className="signup-form">
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-input"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-input"
-              placeholder="Confirm Email"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-input"
-              placeholder="Password"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="form-button">
-              Sign Up
-            </button>
-          </div>
-        </form>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignUpIn />}/>
+          <Route path='signup' element={<SignUpForm/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
