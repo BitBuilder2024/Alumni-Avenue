@@ -10,15 +10,15 @@ import HomeScreen from './Forms/HomeScreen'
 function App() {
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<SignUpIn />}/>
           <Route path='signup' element={<SignUpForm/>}/>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
 
-      {/* Render only HomeScreen
-      <HomeScreen />  */}
+      {/* Render only HomeScreen */}
+      <HomeScreen /> 
     </>
   );
 }

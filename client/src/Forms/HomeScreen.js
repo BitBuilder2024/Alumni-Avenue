@@ -29,17 +29,17 @@ function HomeScreen(){
         <p>Welcome, {userFirstName}!</p>
        </div>
         <div class = "homeProfile">
-            <p>My Profile</p>
-            <button>Edit Profile</button>
+            <h2>My Profile</h2>
+            <button class = "homeBtn">Edit Profile</button>
         </div>
         <ProfileCard uName = {userName} uSchool = {userSchool} uJob = {userJob} uClass = {userClass} uPic = {profilePic}/>
     
         <div class = "homeGroups">
-            <p>My Groups</p>
+            <h2>My Groups</h2>
             {/* Box for the Buttons, so they stay together */}
             <div class = "homeGroupButtons">
-                <button>Join Group</button>
-                <button>Create Group</button>
+                <button class = "homeBtn">Join Group</button>
+                <button class = "homeBtn">Create Group</button>
             </div>
         </div>
         <div class = "homeGroups">

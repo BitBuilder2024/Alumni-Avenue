@@ -125,6 +125,7 @@ input{
 .homeGroupButtons{
   display:flex;
   justify-content: center;
+  gap: 10%;
 }
 
 .homeGroupCard{
@@ -162,4 +163,10 @@ input{
 .homeGroups{
   gap: 2%;
   overflow-x: auto;
+}
+
+.homeBtn{
+  white-space: nowrap;
+  border-radius: 10px;
+  background-color: #7CB9E8;
 }

@@ -11,7 +11,7 @@ function GroupCard (props){
             </div>
             <div class = "hgcRightSide">
                 <p>{props.nMem} Members</p>
-                <button>- Leave Group</button>
+                <button class = "homeBtn">- Leave Group</button>
             </div>
         </div>
     )
