@@ -81,3 +81,85 @@ input{
   }
 
 }
+
+/*HomeScreen Stuff (Ryan)*/
+.homeContainer{
+  margin-left: 5%;
+}
+.homeHeader{
+  display: flex;
+  justify-content: center;
+  background-color: lightblue ;
+  color: white;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+.homeProfile{
+  display: flex;
+  gap: 100px;
+}
+
+.homeProfileCard{
+  display: flex;
+  gap: 10px;
+  background-color: lightgray;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 10px;
+  width: 40%;
+  padding: 2%;
+}
+
+.homeProfPic{
+  height: 100px;
+  width: auto;
+}
+
+.homeGroups{
+  display: flex;
+  gap: 100px;
+}
+
+.homeGroupButtons{
+  display:flex;
+  justify-content: center;
+}
+
+.homeGroupCard{
+  display: flex;
+  gap: 10px;
+  background-color: lightgray;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 10px;
+  width: 40%;
+  padding: 2%;
+  padding-left: 0%;
+  justify-content: space-between;
+}
+
+.homeGroupPic{
+  height: 100px;
+  weight: auto;
+}
+
+.hgcLeftSide{
+}
+
+.hgcRightSide{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.homeGroupName{
+  display: flex;
+  justify-content: center;
+}
+
+.homeGroups{
+  gap: 2%;
+  overflow-x: auto;
+}

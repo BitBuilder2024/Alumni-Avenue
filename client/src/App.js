@@ -5,6 +5,7 @@ import './App.css';
 import SignUpIn from './Forms/SignIn';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignUpForm from './Forms/SignUpForm';
+import HomeScreen from './Forms/HomeScreen'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Route path='signup' element={<SignUpForm/>}/>
         </Routes>
       </BrowserRouter>
+
+      {/* Render only HomeScreen
+      <HomeScreen />  */}
     </>
   );
 }
