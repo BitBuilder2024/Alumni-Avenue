@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"
-//import ProfileCard from "./ProfileCard";
+import GroupCard from "../GroupCard";
+import ProfileCard from "../ProfileCard";
 
 function HomeScreen(){
     const [userFirstName, setUserFirstName] = useState ("INSERT FIRST NAME")
@@ -31,15 +32,7 @@ function HomeScreen(){
             <p>My Profile</p>
             <button>Edit Profile</button>
         </div>
-        <div class = "homeProfileCard">
-        <img class = "homeProfPic" src = {profilePic} alt = "Profile Picture"/>
-        {/* Profile Info */}
-        <div>
-            <p>{userName}</p>
-            <p>{userSchool} {userClass}</p>
-            <p>{userJob}</p>
-        </div>
-        </div>
+        <ProfileCard uName = {userName} uSchool = {userSchool} uJob = {userJob} uClass = {userClass} uPic = {profilePic}/>
     
         <div class = "homeGroups">
             <p>My Groups</p>
@@ -49,15 +42,12 @@ function HomeScreen(){
                 <button>Create Group</button>
             </div>
         </div>
-        <div class = "homeGroupCard">
-            <div class = "hgcLeftSide">
-                <p class = "homeGroupName">{groupName}</p>
-                <img class = "homeGroupPic" src = {groupPic} alt = "Group Picture"/>
-            </div>
-            <div class = "hgcRightSide">
-                <p>{numMembers} Members</p>
-                <button>- Leave Group</button>
-            </div>
+        <div class = "homeGroups">
+            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
+            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
+            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
+            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
+            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
         </div>
     </div>
 </div>

@@ -158,3 +158,8 @@ input{
   display: flex;
   justify-content: center;
 }
+
+.homeGroups{
+  gap: 2%;
+  overflow-x: auto;
+}
