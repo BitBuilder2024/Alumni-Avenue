@@ -88,14 +88,19 @@ input{
 }
 .homeHeader{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   background-color: lightblue ;
   color: white;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding: 1%;
   margin-top: 0%;
   margin-bottom: 0%;
 }
+
+.homeHeader.h2{
+  justify-content: flex-start;
+}
+
 .homeProfile{
   display: flex;
   gap: 100px;
@@ -169,4 +174,8 @@ input{
   white-space: nowrap;
   border-radius: 10px;
   background-color: #7CB9E8;
+}
+
+.homeLogo{
+  height: 60px;
 }
