@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate} from "react-router-dom"
 import GroupCard from "../GroupCard";
 import ProfileCard from "../ProfileCard";
+import HeadCard from "../HeadCard"
 import React from "react";
 
 function HomeScreen(){
@@ -23,11 +24,7 @@ function HomeScreen(){
     return(
 <div>
     {/* header outside bc margins */}
-    <div  class = "homeHeader">
-        <img class = "homeLogo" src = '/AlumAveLogo.png' alt = "Alumni Avenue Logo"/>
-        <h1>Alumni Avenue</h1>
-        <button>Profile</button>
-    </div>
+    <HeadCard/>
     {/* container of everything besides header */}
     <div class = "homeContainer">
        <div>
