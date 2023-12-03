@@ -1,0 +1,226 @@
+.header {
+  color: #fff;
+  background-color: #11a2f3;
+  width: 100%;
+  padding: 25px;
+  font: 500 50px Inter, sans-serif;
+}        
+@media (max-width: 991px) {
+  .header {
+    white-space: initial;
+    max-width: 100%;
+  }
+}
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.create-new-group {
+  font: 400 25px Inter, sans-serif;
+  margin: 10px 30px 20px 50px;
+}
+@media (max-width: 991px) {
+  .create-new-group {
+    margin-left: 10px;
+    white-space: initial;
+    margin-right: 20px;
+  }
+}
+.cancel-button {
+  border-radius: 15px;
+  border: none;
+  margin: 20px 50px 20px 30px;
+  padding: 15px 20px;
+  font: 20px Inter, sans-serif;
+
+  /*Button Transition*/
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+.cancel-button:active {
+  transform: scale(0.95);
+}
+@media (max-width: 991px) {
+  .cancel-button {
+    white-space: initial;
+  }
+}
+.below-header {
+  display: flex;
+  margin-top: 8px;
+  flex-direction: column;
+}
+@media (max-width: 991px) {
+  .below-header {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+.group-card {
+  border-radius: 36px;
+  background-color: #d9d9d9;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+@media (max-width: 991px) {
+  .group-card {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+.image-section {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .div-8 {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+}
+.choose-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-picture-container {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid lightgray;
+}
+.profile-picture {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.new-image-button {
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 10px;
+  font: 400 13px Inter, sans-serif;
+  border: none;
+
+  /*Button Transition*/
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+.new-image-button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 991px) {
+  .new-image-button {
+    white-space: initial;
+  }
+}        
+.group-card-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+@media (max-width: 991px) {
+  .div-11 {
+    max-width: 100%;
+  }
+}
+.character-count {
+  color: grey;
+  font-size: 12px;
+  padding: 5px;
+}
+.group-name {
+  padding: 10px 0px;
+  font: 400 20px Inter, sans-serif;
+}
+@media (max-width: 991px) {
+  .group-name {
+    max-width: 100%;
+    white-space: initial;
+  }
+}
+.group-name-text {
+  padding: 10px;
+  font: 400 15px Inter, sans-serif;
+  border: none;
+  border-radius: 10px;
+}
+@media (max-width: 991px) {
+  .group-name-text {
+    max-width: 100%;
+    white-space: initial;
+  }
+}        
+.group-details {
+  padding: 10px 0px;
+  font: 400 20px Inter, sans-serif;
+}
+@media (max-width: 991px) {
+  .group-details {
+    max-width: 100%;
+    white-space: initial;
+  }
+}
+.group-details-text {
+  padding: 10px;
+  font: 400 15px Inter, sans-serif;
+  border: none;
+  border-radius: 10px;
+}              
+@media (max-width: 991px) {
+  .group-details-text {
+    max-width: 100%;
+  }
+}
+.group-password {
+  padding: 10px 0px;
+  font: 400 20px Inter, sans-serif;
+  border: none;
+}
+@media (max-width: 991px) {
+  .group-password {
+    max-width: 100%;
+  }
+}
+.group-password-text {
+  padding: 10px;
+  font: 400 15px Inter, sans-serif;
+  border: none;
+  border-radius: 10px;
+  width: 40%;
+}
+@media (max-width: 991px) {
+  .group-password-text {
+    max-width: 100%;
+  }
+}
+.create-group-button {
+  color: #fff;
+  margin: 30px 0px 0px 0px;
+  border-radius: 20px;
+  background-color: #11a2f3;
+  align-self: center;
+  width: 940px;
+  max-width: 60%;
+  padding: 10px;
+  font: 400 25px Inter, sans-serif;
+
+  /*Button Transition*/
+  transition: transform 0.1s ease;
+  cursor: pointer;
+  border: none;
+}
+.create-group-button:active {
+  transform: scale(0.95);
+}
+@media (max-width: 991px) {
+  .create-group-button {
+    white-space: initial;
+    margin-top: 40px;
+  }
+}    
