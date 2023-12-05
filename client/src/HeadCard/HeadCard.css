@@ -1,0 +1,61 @@
+/*HomeScreen Stuff (Ryan)*/
+.homeContainer{
+    background-color: white;
+    padding: 50px;
+  }
+
+  .header {
+    color: #fff;
+    background-color: #11a2f3;
+    width: 100%;
+    padding: 25px;
+    font: 500 50px Inter, sans-serif;
+  }  
+
+  /* Header */
+  .homeHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11a2f3;
+    color: white;
+    cursor: pointer;
+  }
+  .homeLogo{
+    height: 100px;
+    margin-left: 20px;
+    cursor: pointer;
+
+    /*Transition*/
+    transition: transform 0.1s ease;
+  }
+  .homeLogo:active {
+    transform: scale(0.95);
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ProfileButton, .SignOutButton {
+    width: 100px;
+    border-radius: 30px;
+    margin-right: 50px;
+    padding: 5px;
+    font: 400 15px Inter, sans-serif;
+    border: none;
+  
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+  }
+  .ProfileButton:active {
+    transform: scale(0.95);
+  }
+  .SignOutButton:active {
+    transform: scale(0.95);
+  }
+
+  /* ----------------------- */
