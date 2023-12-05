@@ -14,6 +14,8 @@ function SignUpForm(){
         career: '',
         jobPosition: '',
         company: '',
+        groupsJoined: [],
+        groupsOwned: []
       });   
 
       useEffect(()=>{
@@ -46,9 +48,32 @@ function SignUpForm(){
             }
           };
   
-        const handleSubmit = (e) => {
+        const handleSubmit = async(e) => {
           e.preventDefault();
           // You can do something with the userData object, like sending it to a server or logging it
+          try {
+            const response = await fetch('http://localhost:4000/api/users', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(userData),
+            });
+        
+            if (response.ok) {
+              // User creation successful, you can handle the response here
+              const responseData = await response.json();
+              console.log('User created:', responseData);
+        
+              // Optionally, you can navigate to another page or perform additional actions
+              navigate('/');
+            } else {
+              // User creation failed, handle the error
+              console.error('User creation failed:', response.statusText);
+            }
+          } catch (error) {
+            console.error('Error:', error.message);
+          }
           console.log(userData);
         };
 

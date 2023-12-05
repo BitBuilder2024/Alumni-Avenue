@@ -1,0 +1,133 @@
+  .homeHeader.h2{
+    justify-content: flex-start;
+  }
+
+  .welcomeText{
+    font: 20px Inter, sans-serif;
+    font-weight: bold;
+    padding: 5px 0px 30px 0px;
+  }
+  
+  .homeProfileCard{
+    display: flex;
+    background-color: lightgray;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    width: 40%;
+    padding: 2%;
+  }
+  
+  .homeProfPic{
+    height: 100px;
+    width: auto;
+  }
+
+  .MyGroupsText{
+    font: 20px Inter, sans-serif;
+    font-weight: bold;
+    padding: 5px 0px 30px 0px;
+  }
+
+  .JoinGroupButton{
+    background-color: #11a2f3;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 20px;
+    font: 15px Inter, sans-serif;
+    font-weight: bold;
+
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+  }
+  .JoinGroupButton:active{
+    transform: scale(0.95);
+  }
+
+  .CreateGroupButton{
+    background-color: #11a2f3;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 12px;
+    font: 15px Inter, sans-serif;
+    font-weight: bold;
+
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+  }
+  .CreateGroupButton:active{
+    transform: scale(0.95);
+  }
+  
+  .homeGroups{
+    display: flex;
+    gap: 100px;
+  }
+  
+  .homeGroupButtons{
+    display:flex;
+    justify-content: center;
+    gap: 10%;
+  }
+  
+  .homeGroupCard{
+    display: flex;
+    gap: 10px;
+    background-color: lightgray;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    width: 40%;
+    padding: 2%;
+    padding-left: 0%;
+    justify-content: space-between;
+
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+  }
+  .homeGroupCard:active{
+    transform: scale(0.95);
+  }
+
+  .LeaveGroup
+  {
+    border-radius: 15px;
+    border: none;
+    padding: 5px;
+
+      /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+.LeaveGroup:active {
+  transform: scale(0.95);
+}
+  
+  .homeGroupPic{
+    height: 100px;
+    weight: auto;
+  }
+  
+  .hgcLeftSide{
+  }
+  
+  .hgcRightSide{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .homeGroupName{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .homeGroups{
+    gap: 2%;
+    overflow-x: auto;
+  }
+  
