@@ -23,8 +23,11 @@ function SearchedGroup(props) {
 
         {/* If group is clicked */}
         {isClicked && (<div className="join-password">
-            Enter password for GROUP NAME
-        </div>)}
+            Enter password for {props.gName}
+        </div>
+        )}
+        {isClicked && (<div className="password-search"><input type="text" className="password-searchbar" placeholder="Enter password"/></div>)}
+        {isClicked && (<div className="enter-password"><button className="join-group-button">Join Group</button></div>)}
         </div>
     );
 };

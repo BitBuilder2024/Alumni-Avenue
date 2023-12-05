@@ -5,19 +5,24 @@ import './App.css';
 import SignUpIn from './Forms/SignIn';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignUpForm from './Forms/SignUpForm';
+import HomeScreen from './Forms/HomeScreen'
 import JoinNewGroup from './JoinNewGroup';
 
 function App() {
   return (
     <>
-      {/*<BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path='/' element={<SignUpIn />}/>
           <Route path='signup' element={<SignUpForm/>}/>
           <Route path='/' element={<CreateGroup/>}></Route>
         </Routes>
-  </BrowserRouter>*/}
-  <JoinNewGroup/>
+  </BrowserRouter>
+  
+  {/* <JoinNewGroup/> */}
+
+      {/* Render only HomeScreen
+      <HomeScreen />  */}
     </>
   );
 }
