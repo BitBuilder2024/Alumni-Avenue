@@ -10,7 +10,7 @@ function HeadCard(props) {
             </Link>
             <div className="header">Alumni Avenue</div>
             <div className="button-container">
-                <Link to='/Components/Signup'>
+                <Link to='/EditProfile'>
                     <button className="ProfileButton">Profile</button>
                 </Link>
                 <Link to='/'>
