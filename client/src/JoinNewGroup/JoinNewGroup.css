@@ -1,0 +1,129 @@
+.group-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #11A2F3;
+    padding: 1%;
+    width: 100%;
+    color: white;
+  }
+  
+  .join-container{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    flex-direction: column;
+  }
+  
+  .go-back{
+    display: flex;
+    margin-left: 20px;
+  }
+  
+  .back-button{
+    display: flex;
+    margin: 8px;
+    width: auto;
+    height: auto;
+    color:black;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .join-title{
+    display: flex;
+    margin-left: 5px;
+  }
+  
+  .join-search-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    height: 663px;
+    width: 723px;
+    border-radius: 30px;
+    overflow-y: scroll;
+  }
+  
+  .search-container{
+    margin-top: 15px;
+    margin-left: 32px;
+  }
+  
+  .join-password{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 15px;
+  
+  }
+  
+  .password-search{
+    display: flex;
+    margin-left: 29px;
+    margin-top: 5px;
+  }
+  
+  .password-searchbar{
+    width: 630px;
+  }
+  
+  .enter-password{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .join-group-button{
+    width: 650px;
+    padding: 1%;
+    cursor: pointer;
+    color: white;
+    font-size: larger;
+    border: none;
+    background-color: #11A2F3;
+    border-radius: 10px;
+  }
+  
+  /* Search Bar */
+  .search{
+    margin-left: 2%;
+    margin-top: 1.5%;
+  }
+  
+  .search-bar{
+    width: 500px;
+    padding: 8px;
+  }
+  
+  /* Searched Groups */
+  .searched-group{
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    gap: 275px;
+  }
+  
+  .left-searched-group{
+  }
+  
+  .right-searched-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .joinGroupName{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .joinGroupPic{
+    height: 100px;
+  }
