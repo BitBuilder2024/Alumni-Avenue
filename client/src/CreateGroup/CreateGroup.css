@@ -1,33 +1,16 @@
-.header {
-  color: #fff;
-  background-color: #11a2f3;
-  width: 100%;
-  padding: 25px;
-  font: 500 50px Inter, sans-serif;
-}        
-@media (max-width: 991px) {
-  .header {
-    white-space: initial;
-    max-width: 100%;
-  }
-}
 .top-buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
 }
+
 .create-new-group {
   font: 400 25px Inter, sans-serif;
+  font-weight: bold;
   margin: 10px 30px 20px 50px;
 }
-@media (max-width: 991px) {
-  .create-new-group {
-    margin-left: 10px;
-    white-space: initial;
-    margin-right: 20px;
-  }
-}
+
 .cancel-button {
   border-radius: 15px;
   border: none;
@@ -42,22 +25,13 @@
 .cancel-button:active {
   transform: scale(0.95);
 }
-@media (max-width: 991px) {
-  .cancel-button {
-    white-space: initial;
-  }
-}
+
 .below-header {
   display: flex;
   margin-top: 8px;
   flex-direction: column;
 }
-@media (max-width: 991px) {
-  .below-header {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-}
+
 .group-card {
   border-radius: 36px;
   background-color: #d9d9d9;
@@ -66,12 +40,7 @@
   flex-direction: column;
   padding: 30px;
 }
-@media (max-width: 991px) {
-  .group-card {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-}
+
 .image-section {
   display: flex;
   gap: 20px;

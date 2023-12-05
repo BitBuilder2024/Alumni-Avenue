@@ -1,7 +1,4 @@
-// Login.js
-
 import React, { useState } from 'react';
-import './Login.css';
 import axios from 'axios';
 import ForgotPassword from './ForgotPassword';
 import { ToastContainer, toast } from 'react-toastify';
@@ -35,9 +32,17 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const goUpdate = () => {
-    navigate(`/update?email=${user.Email}`);
+  const SignInVariations = () => {
+    // If logis incorrect or account doesn't exist:
+    // Add implementation
+    
+    // If login is successful:
+    // Implement user specifications later
+    navigate('/HomeScreen')
   };
+  /*  const goUpdate = () => {
+    navigate(`/update?email=${user.Email}`);
+  };*/
 
   // Updated Link to navigate to the /forgotPassword route
   const goForgotPassword = () => {
@@ -71,7 +76,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" style={{ color: "white", backgroundColor: "blue" }} onClick={goUpdate} className='btn'>Sign In</button>
+        <button type="button" onClick={SignInVariations} style={{ color: 'white', backgroundColor: 'blue' }} className="btn">Sign In</button>
         <p>
           Don't have an account?<b> <Link to="/Components/Signup" style={{ textDecoration: "none" }}>Signup</Link></b>
         </p>

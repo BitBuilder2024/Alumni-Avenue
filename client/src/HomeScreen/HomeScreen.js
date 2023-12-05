@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useNavigate} from "react-router-dom"
 import GroupCard from "../Components/GroupCard";
 import ProfileCard from "../Components/ProfileCard";
-import HeadCard from "../Components/HeadCard"
+import HeadCard from "../HeadCard/HeadCard"
 import React from "react";
+import './HomeScreen.css';
 
 function HomeScreen(){
     const [userFirstName, setUserFirstName] = useState ("INSERT FIRST NAME")
@@ -39,34 +40,29 @@ function HomeScreen(){
         fetchGroups();
     }, [])
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    function CreateGroupRoute(){
+        navigate('/CreateGroupRoute');
+    }
+    function JoinGroupRoute(){
+        navigate(/*'/insert the path to join new group web page'*/);
+    }
 
     return(
 <div>
     {/* header outside bc margins */}
     <HeadCard/>
     {/* container of everything besides header */}
-    <div className = "homeContainer">
-       <div>
-        <p>Welcome, {userFirstName}!</p>
-       </div>
-        <div class = "homeProfile">
-            <h2>My Profile</h2>
-            <button 
-            class = "homeBtn" 
-            // onclick = {() => navigate('/signup')}
-            >
-                Edit Profile
-            </button>
-        </div>
+    <div class = "homeContainer">
+        <div class = "welcomeText">Welcome, {userFirstName}!</div>
         <ProfileCard uName = {userName} uSchool = {userSchool} uJob = {userJob} uClass = {userClass} uPic = {profilePic}/>
     
         <div class = "homeGroups">
-            <h2>My Groups</h2>
+            <div class="MyGroupsText">My Groups</div>
             {/* Box for the Buttons, so they stay together */}
             <div class = "homeGroupButtons">
-                <button class = "homeBtn">Join Group</button>
-                <button class = "homeBtn">Create Group</button>
+                <button class = "JoinGroupButton" /*onClick={JoinGroupRoute}*/>Join Group</button>
+                <button class = "CreateGroupButton" onClick={CreateGroupRoute}>Create Group</button>
             </div>
         </div>
         <div className = "homeGroups">

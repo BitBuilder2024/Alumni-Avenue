@@ -71,121 +71,120 @@ const Update = (props) => {
 
   return (
     <div className='signup-page'>
-          <div className='Cntainer '>
-          <div className="form-title"><h2>ALUMNI AVENUE</h2></div>
-      <div className="form-group">
-        <label htmlFor="name">Enter Your Name</label>
-        <input
-          type="text"
-          id="name"
-          name="Name"
-          value={userData.Name}
-          onChange={handleInputChange}
-          placeholder="e.g John Doe"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="email">Enter Your Email</label>
-        <input
-          type="email"
-          id="email"
-          name="Email"
-          value={userData.Email}
-          onChange={handleInputChange}
-          placeholder="e.g. Johndoe@gmail.com"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Enter Your Password</label>
-        <input
-          type="password"
-          id="password"
-          name="Password"
-          value={userData.Password}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      
-      <div className="form-group">
-        <label htmlFor="image">Profile picture</label>
-        <input
-          type="file"
-          id="image"
-          name="Image"
+      <div className='Cntainer '>
+        <div className="form-title"><h2>ALUMNI AVENUE</h2></div>
+          <div className="form-group">
+            <label htmlFor="name">Enter Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="Name"
+              value={userData.Name}
+              onChange={handleInputChange}
+              placeholder="e.g John Doe"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Enter Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="Email"
+              value={userData.Email}
+              onChange={handleInputChange}
+              placeholder="e.g. Johndoe@gmail.com"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Enter Your Password</label>
+            <input
+              type="password"
+              id="password"
+              name="Password"
+              value={userData.Password}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
           
-          onChange={handleInputChange}
-          
-        />
+          <div className="form-group">
+            <label htmlFor="image">Profile picture</label>
+            <input
+              type="file"
+              id="image"
+              name="Image"
+              
+              onChange={handleInputChange}
+              
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="company">Company</label>
+            <input
+              type="text"
+              id="company"
+              name="Company"
+              value={userData.Company}
+              onChange={handleInputChange}
+              
+            />
+          </div>
+          {/* Additional input fields */}
+          <div className="form-group">
+            <label htmlFor="education-level">Highest level of Education</label>
+            <input
+              type="text"
+              id="education-level"
+              name="EducationLevel"
+              value={userData.EducationLevel}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="graduation-year">Graduation year</label>
+            <input
+              type="text"
+              id="graduation-year"
+              name="GraduationYear"
+              value={userData.GraduationYear}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="major">Major</label>
+            <input
+              type="text"
+              id="major"
+              name="Major"
+              value={userData.Major}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="career">Career</label>
+            <input
+              type="text"
+              id="career"
+              name="Career"
+              value={userData.Career}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="job-position">Job position</label>
+            <input
+              type="text"
+              id="job-position"
+              name="JobPosition"
+              value={userData.JobPosition}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button className='btn' style={{color:"white",backgroundColor:"blue"}} onClick={handleUpdate}>Save Changes</button>
+        </div>
       </div>
-      <div className="form-group">
-        <label htmlFor="company">Company</label>
-        <input
-          type="text"
-          id="company"
-          name="Company"
-          value={userData.Company}
-          onChange={handleInputChange}
-          
-        />
-      </div>
-      {/* Additional input fields */}
-      <div className="form-group">
-        <label htmlFor="education-level">Highest level of Education</label>
-        <input
-          type="text"
-          id="education-level"
-          name="EducationLevel"
-          value={userData.EducationLevel}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="graduation-year">Graduation year</label>
-        <input
-          type="text"
-          id="graduation-year"
-          name="GraduationYear"
-          value={userData.GraduationYear}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="major">Major</label>
-        <input
-          type="text"
-          id="major"
-          name="Major"
-          value={userData.Major}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="career">Career</label>
-        <input
-          type="text"
-          id="career"
-          name="Career"
-          value={userData.Career}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="job-position">Job position</label>
-        <input
-          type="text"
-          id="job-position"
-          name="JobPosition"
-          value={userData.JobPosition}
-          onChange={handleInputChange}
-        />
-      </div>
-      <button className='btn' style={{color:"white",backgroundColor:"blue"}} onClick={handleUpdate}>Save Changes</button>
-    </div>
-    </div>
-
   );
 };
 

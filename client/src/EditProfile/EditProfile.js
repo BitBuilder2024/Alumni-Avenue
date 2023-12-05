@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate} from "react-router-dom"
 import GroupCard from "../Components/GroupCard";
 import ProfileCard from "../Components/ProfileCard";
-import HeadCard from "../Components/HeadCard"
+import HeadCard from "../HeadCard/HeadCard"
 import React from "react";
 import './EditProfile.css';
 
