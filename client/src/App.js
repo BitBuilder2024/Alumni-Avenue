@@ -21,6 +21,7 @@ const App = () => {
         <Route path="/HomeScreen" element={<HomeScreen />} />
         <Route path="/CreateGroupRoute" element={<CreateGroup />} />
         <Route path="/update" element={<Update />} />
+        <Route path = "/EditProfile" element = {<EditProfile/>} />
       </Routes>
     </Router>
   );
