@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import './App.css';
+import { Link } from 'react-router-dom';
+import './CreateGroup.css';
+import HeadCard from "../HeadCard/HeadCard"
 
-function MyComponent(props) {
+function CreateGroup() {
 
 // State to hold the current image URL
 const [imageSrc, setImageSrc] = useState("https://www.booksie.com/files/profiles/22/mr-anonymous.png");
@@ -38,11 +40,13 @@ const handleGroupDetailsChange = (event) => {
 
   return (
     <>
-        <div className="header">Alumni Avenue</div>
+        <HeadCard/>
         <div className="below-header">
           <div className="top-buttons">
             <div className="create-new-group">Create New Group</div>
-            <button className="cancel-button">Cancel</button>
+            <Link to="/HomeScreen">
+              <button className="cancel-button">Cancel</button>
+            </Link>
 
           </div>
           <div className="group-card">
@@ -103,4 +107,4 @@ const handleGroupDetailsChange = (event) => {
   );
 }
 
-export default MyComponent;
+export default CreateGroup
