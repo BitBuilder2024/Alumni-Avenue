@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"
+import '.././HomeScreen/HomeScreen.css'
 
 function GroupCard (props){
     return(
@@ -11,7 +12,7 @@ function GroupCard (props){
             </div>
             <div class = "hgcRightSide">
                 <p>{props.nMem} Members</p>
-                <button>- Leave Group</button>
+                <button class = "homeBtn">- Leave Group</button>
             </div>
         </div>
     )

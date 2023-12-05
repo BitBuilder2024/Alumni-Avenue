@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
-import GroupCard from "../GroupCard";
-import ProfileCard from "../ProfileCard";
+import { useNavigate} from "react-router-dom"
+import GroupCard from "../Components/GroupCard";
+import ProfileCard from "../Components/ProfileCard";
+import HeadCard from "../Components/HeadCard"
+import React from "react";
 
 function HomeScreen(){
     const [userFirstName, setUserFirstName] = useState ("INSERT FIRST NAME")
@@ -37,29 +39,34 @@ function HomeScreen(){
         fetchGroups();
     }, [])
 
+    // const navigate = useNavigate();
+
     return(
 <div>
     {/* header outside bc margins */}
-    <div>
-        <h1 className = "homeHeader">Alumni Avenue</h1>
-    </div>
+    <HeadCard/>
     {/* container of everything besides header */}
     <div className = "homeContainer">
        <div>
         <p>Welcome, {userFirstName}!</p>
        </div>
-        <div className = "homeProfile">
-            <p>My Profile</p>
-            <button>Edit Profile</button>
+        <div class = "homeProfile">
+            <h2>My Profile</h2>
+            <button 
+            class = "homeBtn" 
+            // onclick = {() => navigate('/signup')}
+            >
+                Edit Profile
+            </button>
         </div>
         <ProfileCard uName = {userName} uSchool = {userSchool} uJob = {userJob} uClass = {userClass} uPic = {profilePic}/>
     
-        <div className = "homeGroups">
-            <p>My Groups</p>
+        <div class = "homeGroups">
+            <h2>My Groups</h2>
             {/* Box for the Buttons, so they stay together */}
-            <div className = "homeGroupButtons">
-                <button>Join Group</button>
-                <button>Create Group</button>
+            <div class = "homeGroupButtons">
+                <button class = "homeBtn">Join Group</button>
+                <button class = "homeBtn">Create Group</button>
             </div>
         </div>
         <div className = "homeGroups">
