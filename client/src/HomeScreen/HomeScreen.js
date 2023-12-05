@@ -16,9 +16,29 @@ function HomeScreen(){
     const [userClass, setUserClass] = useState ("INSERT CLASS")
     const [userJob, serUserJob] = useState ("JOB @ COMPANY")
     // State Variables for the Group Card
-    const [groupName, setGroupName] = useState ("GROUP NAME")
+
     const [groupPic, setGroupPic] = useState ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png')
-    const [numMembers, setNumMembers] = useState (999)
+
+    const [groups, setGroups] = useState(null)
+    useEffect(()=>{
+        const fetchGroups = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/api/groups');
+        
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error fetching groups:', errorData);
+                } else {
+                    const jsonData = await response.json();
+                    console.log('Fetched groups:', jsonData);
+                    setGroups(jsonData);
+                }
+            } catch (error) {
+                console.error('Error fetching groups:', error);
+            }
+        }
+        fetchGroups();
+    }, [])
 
     const navigate = useNavigate();
     function CreateGroupRoute(){
@@ -45,12 +65,10 @@ function HomeScreen(){
                 <button class = "CreateGroupButton" onClick={CreateGroupRoute}>Create Group</button>
             </div>
         </div>
-        <div class = "homeGroups">
-            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
-            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
-            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
-            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
-            <GroupCard nMem = {numMembers} gPic = {groupPic} gName = {groupName} />
+        <div className = "homeGroups">
+            {groups && groups.map((group)=>(
+                <GroupCard nMem = {group.peopleCount} gPic={groupPic} gName = {group.groupName}/>
+            ))}
         </div>
     </div>
 </div>

@@ -10,7 +10,6 @@ import CreateGroup from './CreateGroup/CreateGroup'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EditProfile from './EditProfile/EditProfile';
 
-
 const App = () => {
   return (
     <Router>
