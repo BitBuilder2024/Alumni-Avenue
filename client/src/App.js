@@ -12,7 +12,6 @@ import SignUpForm from './Forms/SignUpForm';
 import HomeScreen from './HomeScreen/HomeScreen';
 import EditProfile from './EditProfile/EditProfile';
 
-
 const App = () => {
   return (
     <Router>
