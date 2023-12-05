@@ -7,25 +7,37 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    gradDate: {
-        type: Number,
+    email: {
+        type: String,
         required: true
     },
-    fieldOfWorkOrInterest: {
+    education: {
         type: String,
+        required: true
+    },
+    profilePicture:{
+        type: String,
+        required: true
+    },
+    graduationYear: {
+        type: Number,
         required: true
     },
     major: {
         type: String,
         required: true
-    },
-    currentEmployer: {
+    },   
+    career: {
         type: String,
-        required: false
+        required: true
     },
-    currentEmploymentRole: {
+    jobPosition: {
         type: String,
-        required: false
+        required: true
+    },
+    company:{
+        type: String,
+        required: true
     },
     groupsJoined: {
         type: Array,

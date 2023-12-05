@@ -14,7 +14,12 @@ const groupSchema = new Schema({
     peopleInGroup: {
         type: Array,
         required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
+
 
 
 
