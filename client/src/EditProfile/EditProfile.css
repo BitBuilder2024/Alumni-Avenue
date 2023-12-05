@@ -1,0 +1,35 @@
+/*EditProfile Stuff (Ryan)*/
+.ep{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .epCard{
+    gap: 10px;
+    background-color: lightgray;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    padding: 5%;
+    padding-top: 0%;
+    width: 50%;
+  }
+  
+  .epTop{
+    display: flex;
+    gap: 10%;
+  }
+  
+  .submitBox{
+    display:flex;
+    justify-content: flex-end;
+  }
+  
+  .submitButton{
+    background-color: #7CB9E8;
+    width: 50%;
+    border: 0;
+  }
+  
+  
+  
