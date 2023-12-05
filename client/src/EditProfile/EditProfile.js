@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"
-import GroupCard from "../GroupCard";
-import ProfileCard from "../ProfileCard";
-import HeadCard from "../HeadCard"
+import GroupCard from "../Components/GroupCard";
+import ProfileCard from "../Components/ProfileCard";
+import HeadCard from "../Components/HeadCard"
 import React from "react";
+import './EditProfile.css';
 
 function HomeScreen(){
  

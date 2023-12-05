@@ -5,8 +5,8 @@ import './App.css';
 import SignUpIn from './Forms/SignIn';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignUpForm from './Forms/SignUpForm';
-import HomeScreen from './Forms/HomeScreen';
-import EditProfile from './Forms/EditProfile';
+import HomeScreen from './HomeScreen/HomeScreen';
+import EditProfile from './EditProfile/EditProfile';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       </BrowserRouter> */}
 
       {/* Render only HomeScreen */}
-      <EditProfile /> 
+      <HomeScreen /> 
     </>
   );
 }
