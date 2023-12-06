@@ -22,15 +22,18 @@ const getUser = async(req,res) => {
     res.status(200).json(user)
 }
 // create a new user
-const createUser = async (req,res)=>{
-    const {name, email, education, profilePicture, graduationYear, major, career, jobPosition, company, groupsJoined, groupsOwned} = req.body
+const createUser = async (req, res) => {
+    const { name, email, password, education, profilePicture, graduationYear, major, career, jobPosition, company, groupsJoined, groupsOwned } = req.body;
 
-    //add doc to db
+    // Exclude confirmPassword from the request body
+    const { confirmPassword, ...userData } = req.body;
+
+    // Add doc to the database
     try {
-        const user = await User.create({name, email, education, profilePicture, graduationYear, major, career, jobPosition, company, groupsJoined, groupsOwned})
-        res.status(200).json(user)
+        const user = await User.create(userData);
+        res.status(200).json(user);
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message });
     }
 }
 //delete a user

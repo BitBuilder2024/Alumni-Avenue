@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -8,21 +7,22 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    Name: '',
-    Email: '',
-    Password: '',
+    name: '',
+    email: '',
+    password: '',
     confirmPassword: '',
-    EducationLevel: '', // New field for education level
-    Image: '',
-    GraduationYear: '',
-    Major: '',
-    Career: '',
-    JobPosition: '',
-    Company: '',
+    education: '', // New field for education level
+    profilePicture: '',
+    graduationYear: '',
+    major: '',
+    career: '',
+    jobPosition: '',
+    company: '',
+    groupsJoined: [],
+    groupsOwned: []
   });
 
   const handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -30,36 +30,33 @@ const Signup = () => {
     });
   };
 
-  const register = () => {
-    const { Name, Email, Password, confirmPassword, EducationLevel, Image, GraduationYear, Major, Career, JobPosition, Company } = user;
-    if (Name && Email && Password && confirmPassword && Password === confirmPassword) {
-      const userData = {
-        Name,
-        Email,
-        Password,
-        EducationLevel,
-        Image,
-        GraduationYear,
-        Major,
-        Career,
-        JobPosition,
-        Company,
-      };
-
-      axios.post('http://localhost:9270/Signup', userData)
-        .then((res) => {
-          console.log(res);
-          alert('Account created');
-          navigate('/');
-          //toast.success("Account Created Successfully");
-        })
-        .catch((error) => {
-          console.error('Error creating account:', error);
-          toast.error('Error creating account');
-        });
-    } else {
-      toast.error('Invalid');
+  const handleFormSubmit = async(e) => {
+    e.preventDefault();
+    // You can do something with the userData object, like sending it to a server or logging it
+    try {
+      const response = await fetch('http://localhost:4000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+  
+      if (response.ok) {
+        // User creation successful, you can handle the response here
+        const responseData = await response.json();
+        console.log('User created:', responseData);
+  
+        // Optionally, you can navigate to another page or perform additional actions
+        navigate('/HomeScreen');
+      } else {
+        // User creation failed, handle the error
+        console.error('User creation failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
     }
+    console.log(user)
   };
 
   return (
@@ -71,9 +68,9 @@ const Signup = () => {
           <label htmlFor="Name">Enter Your Name</label>
           <input
             type="text"
-            id="Name"
-            name="Name"
-            value={user.Name}
+            id="name"
+            name="name"
+            value={user.name}
             onChange={handleChange}
             placeholder="e.g John Doe"
             required
@@ -84,8 +81,8 @@ const Signup = () => {
           <input
             type="email"
             id="email"
-            name="Email"
-            value={user.Email}
+            name="email"
+            value={user.email}
             onChange={handleChange}
             placeholder="e.g. Johndoe@gmail.com"
             required
@@ -96,8 +93,8 @@ const Signup = () => {
           <input
             type="password"
             id="password"
-            name="Password"
-            value={user.Password}
+            name="password"
+            value={user.password}
             onChange={handleChange}
             required
           />
@@ -119,8 +116,8 @@ const Signup = () => {
           <input
             type="text"
             id="education-level"
-            name="EducationLevel"
-            value={user.EducationLevel}
+            name="education"
+            value={user.education}
             onChange={handleChange}
             placeholder="e.g. Bachelors degree"
             required
@@ -130,8 +127,8 @@ const Signup = () => {
           <label htmlFor="profile-picture">Profile picture </label>
           <input
             type="file"
-            id="profile-picture"
-            name="Image"
+            id="profilePicture"
+            name="profilePicture"
             accept="image/*"
            
             onChange={handleChange}
@@ -143,8 +140,8 @@ const Signup = () => {
           <input
             type="text"
             id="graduation-year"
-            name="GraduationYear"
-            value={user.GraduationYear}
+            name="graduationYear"
+            value={user.graduationYear}
             onChange={handleChange}
             placeholder="e.g.2023"
             required
@@ -155,8 +152,8 @@ const Signup = () => {
           <input
             type="text"
             id="major"
-            name="Major"
-            value={user.Major}
+            name="major"
+            value={user.major}
             onChange={handleChange}
             placeholder="e.g. Computer Science"
             required
@@ -167,8 +164,8 @@ const Signup = () => {
           <input
             type="text"
             id="career"
-            name="Career"
-            value={user.Career}
+            name="career"
+            value={user.career}
             onChange={handleChange}
             placeholder="e.g. Software Development"
             required
@@ -179,8 +176,8 @@ const Signup = () => {
           <input
             type="text"
             id="job-position"
-            name="JobPosition"
-            value={user.JobPosition}
+            name="jobPosition"
+            value={user.jobPosition}
             onChange={handleChange}
             placeholder="e.g. Fullstack software developer"
             required
@@ -191,14 +188,14 @@ const Signup = () => {
           <input
             type="text"
             id="company"
-            name="Company"
-            value={user.Company}
+            name="company"
+            value={user.company}
             onChange={handleChange}
             placeholder="e.g. Google Inc."
             required
           />
         </div>
-        <button type="submit" style={{color:"white",backgroundColor:"blue"}} onClick={register} className="btn">
+        <button type="submit" style={{color:"white",backgroundColor:"blue"}} onClick={handleFormSubmit} className="btn">
           Sign Up
         </button>
       </div>
