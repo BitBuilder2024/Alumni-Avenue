@@ -71,10 +71,34 @@ const updateUser = async(req, res) => {
     res.status(200).json(user)
 
 }
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      const isPasswordMatch = await user.comparePassword(password);
+  
+      if (!isPasswordMatch) {
+        return res.status(401).json({ error: 'Incorrect password' });
+      }
+  
+      // Passwords match, consider the user logged in
+      res.status(200).json({ message: 'Login successful', user });
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 module.exports = {
     createUser,
     getUser,
     getUsers,
     deleteUser,
-    updateUser
+    updateUser,
+    loginUser
 }
