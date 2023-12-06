@@ -4,6 +4,7 @@ import ForgotPassword from './ForgotPassword';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { setCurrentUserId, getCurrentUserId } from '../currentUser'
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -30,9 +31,9 @@ const Login = () => {
       });
   };
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // You can do something with the userData object, like sending it to a server or logging it
+  
     try {
       const response = await fetch('http://localhost:4000/api/users/login', {
         method: 'POST',
@@ -43,21 +44,27 @@ const Login = () => {
       });
   
       if (response.ok) {
-        // User creation successful, you can handle the response here
         const responseData = await response.json();
-        console.log('Successful Login:', responseData);
+  
+        // Make sure to access the correct key containing userId
+        const userId = responseData.user._id;
+  
+        // Pass the user ID to setCurrentUserId
+        setCurrentUserId(userId);
+  
+        // Output user ID to console
+        console.log('User ID has been set:', getCurrentUserId());
   
         // Optionally, you can navigate to another page or perform additional actions
         navigate('/HomeScreen');
       } else {
-        // User creation failed, handle the error
         console.error('Login failed:', response.statusText);
       }
     } catch (error) {
       console.error('Error:', error.message);
     }
-    console.log(user)
   };
+  
 
   /*const SignInVariations = () => {
     // If logis incorrect or account doesn't exist:
