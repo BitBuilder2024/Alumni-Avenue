@@ -1,0 +1,82 @@
+.below-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .create-new-group {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .cancel-button {
+    border-radius: 15px;
+    border: none;
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  
+  .cancel-button:active {
+    transform: scale(0.95);
+  }
+  
+  .message-card {
+    width: 70%;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-field {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    align-self: center;
+    width: 95vh;
+  }
+  
+  .field-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .field-input,
+  .field-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    font-family: Inter, sans-serif;
+    border: none;
+  }
+  
+  .field-textarea {
+    height: 150px;
+    resize: none;
+  }
+  
+  .send-button {
+    background-color: #11a2f3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: center;
+  }
+  .send-button:hover {
+    background-color: #0d8bf2;
+  }  
