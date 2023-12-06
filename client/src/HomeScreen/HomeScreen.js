@@ -49,6 +49,27 @@ function HomeScreen(){
         fetchGroups();
     }, [])
 
+    const [users, setUsers] = useState(null)
+    useEffect(()=>{
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/api/users');
+        
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error fetching users:', errorData);
+                } else {
+                    const jsonData = await response.json();
+                    console.log('Fetched users:', jsonData);
+                    setUsers(jsonData);
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+        fetchUsers();
+    }, [])
+
     const navigate = useNavigate();
     function CreateGroupRoute(){
         navigate('/CreateGroupRoute');
@@ -68,8 +89,14 @@ function HomeScreen(){
     {/* container of everything besides header */}
     <div class = "homeContainer">
         <div class = "welcomeText">Welcome, {userFirstName}!</div>
-        <ProfileCard uName = {userName} uSchool = {userSchool} uJob = {userJob} uClass = {userClass} uPic = {profilePic}/>
-    
+        {users && users.map((users) => (
+            <ProfileCard 
+                uName = {users.name} 
+                uSchool = {users.education} 
+                uJob = {users.fieldOfWorkOrInterest} 
+                uClass = {users.gradDate} 
+                uPic = {users.profilePicture}/>
+        ))}
         <div class = "homeGroups">
             <div class="MyGroupsText">My Groups</div>
             {/* Box for the Buttons, so they stay together */}
