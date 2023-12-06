@@ -4,10 +4,7 @@ import './MessageBoard.css'; // Ensure this is the correct path to your CSS file
 import HeadCard from "../HeadCard/HeadCard";
 
 function MessageBoard() {
-  const [message, setMessage] = useState('');
-  const [subject, setSubject] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
   const memberEmail = "ryanvuemail@gmail.com";
 
   const [details, setDetails] = useState({
