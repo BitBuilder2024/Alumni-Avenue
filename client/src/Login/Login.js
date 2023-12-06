@@ -51,7 +51,7 @@ const Login = () => {
         navigate('/HomeScreen');
       } else {
         // User creation failed, handle the error
-        console.error('User creation failed:', response.statusText);
+        console.error('Login failed:', response.statusText);
       }
     } catch (error) {
       console.error('Error:', error.message);
