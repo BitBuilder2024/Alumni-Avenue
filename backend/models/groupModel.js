@@ -7,16 +7,20 @@ const groupSchema = new Schema({
         type: String,
         required: true
     },
+    groupDetails: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     peopleCount: {
         type: Number,
         required: true
     },
     peopleInGroup: {
         type: Array,
-        required: true
-    },
-    password: {
-        type: String,
         required: true
     },
     profilePicture: {
