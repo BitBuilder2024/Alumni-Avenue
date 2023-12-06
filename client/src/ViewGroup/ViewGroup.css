@@ -1,0 +1,119 @@
+.view-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: white;
+}
+
+.LeaveGroup{
+    border-radius: 15px;
+    border: none;
+    margin: 20px 0px 20px 30px;
+    padding: 15px 20px;
+    font: 20px Inter, sans-serif;
+  
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+.LeaveGroup:active {
+    transform: scale(0.95);
+  }
+
+.group-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.group-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.group-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.group-name, .group-members-count {
+    font: 30px Inter, sans-serif;
+    color: #11a2f3;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Member Card */
+
+.members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.member-card {
+    flex: 0 1 calc(20% - 10px);
+    display: flex;
+    align-items: center;
+    background-color: #d2eaf9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    /* Hover effect */
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+.member-profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.member-name, .member-class-year, .member-position {
+    margin: 2px 0;
+}
+
+/* End of Member Card */
+
+/* Filter */
+
+.filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-type-select, .filter-input {
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    border: none;
+    font: 400 15px Inter, sans-serif;
+    margin-bottom: 10px;
+}
+
+.filter-input {
+    flex-grow: 0;
+    width: 30%;
+}
+
+/* End of Filter */
