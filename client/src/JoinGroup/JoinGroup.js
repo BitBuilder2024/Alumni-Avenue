@@ -76,9 +76,13 @@ function JoinGroup() {
     };
 
     // REPLACE FILTER DATA WITH BACKEND COMPONENTS
-    const filteredGroups = groups.filter(group => 
+    let filteredGroups = [];
+    if (groups!= null)
+    {
+        filteredGroups = groups.filter(group => 
         group.groupName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+        );
+    }
 
     return (
         <div>
