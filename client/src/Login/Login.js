@@ -7,10 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [user, setUser] = useState({
-    Email: '',
-    Password: '',
+    email: '',
+    password: '',
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -30,9 +30,36 @@ const Login = () => {
       });
   };
 
-  const navigate = useNavigate();
+  const handleLogin = async(e) => {
+    e.preventDefault();
+    // You can do something with the userData object, like sending it to a server or logging it
+    try {
+      const response = await fetch('http://localhost:4000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+  
+      if (response.ok) {
+        // User creation successful, you can handle the response here
+        const responseData = await response.json();
+        console.log('Successful Login:', responseData);
+  
+        // Optionally, you can navigate to another page or perform additional actions
+        navigate('/HomeScreen');
+      } else {
+        // User creation failed, handle the error
+        console.error('User creation failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+    console.log(user)
+  };
 
-  const SignInVariations = () => {
+  /*const SignInVariations = () => {
     // If logis incorrect or account doesn't exist:
     // Add implementation
     
@@ -42,7 +69,7 @@ const Login = () => {
   };
   /*  const goUpdate = () => {
     navigate(`/update?email=${user.Email}`);
-  };*/
+  };*/ 
 
   // Updated Link to navigate to the /forgotPassword route
   const goForgotPassword = () => {
@@ -59,8 +86,8 @@ const Login = () => {
           <input
             type="email"
             id="email"
-            name="Email"
-            value={user.Email}
+            name="email"
+            value={user.email}
             onChange={handleChange}
             required
           />
@@ -70,13 +97,13 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            name="Password"
-            value={user.Password}
+            name="password"
+            value={user.password}
             onChange={handleChange}
             required
           />
         </div>
-        <button type="button" onClick={SignInVariations} style={{ color: 'white', backgroundColor: 'blue' }} className="btn">Sign In</button>
+        <button type="button" onClick={handleLogin} style={{ color: 'white', backgroundColor: 'blue' }} className="btn">Sign In</button>
         <p>
           Don't have an account?<b> <Link to="/Components/Signup" style={{ textDecoration: "none" }}>Signup</Link></b>
         </p>
