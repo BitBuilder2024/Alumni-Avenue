@@ -8,11 +8,49 @@ function MessageBoard() {
   const [subject, setSubject] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const memberEmail = location.state?.memberEmail || 'default@example.com';
+  const memberEmail = "ryanvuemail@gmail.com";
 
-  const handleSubmit = () => {
-    console.log(`Sending email to ${memberEmail}: Subject: ${subject}, Message: ${message}`);
-    navigate(-1);
+  const [details, setDetails] = useState({
+    to: memberEmail,
+    subject: '',
+    text: ''
+  })
+
+  const handleEmailSubmit = async(e) => {
+    e.preventDefault();
+    // You can do something with the userData object, like sending it to a server or logging it
+    try {
+      const response = await fetch('http://localhost:4000/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(details),
+      });
+  
+      if (response.ok) {
+        // User creation successful, you can handle the response here
+        const responseData = await response.json();
+        console.log('Email sent:', responseData);
+  
+        // Optionally, you can navigate to another page or perform additional actions
+        navigate(-1);
+      } else {
+        // User creation failed, handle the error
+        console.error('Email failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+    console.log(details)
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails({
+      ...details,
+      [name]: value,
+    });
   };
 
   const goBack = () => {
@@ -32,8 +70,10 @@ function MessageBoard() {
             <div className="field-label">Subject</div>
             <input 
               type="text" 
-              value={subject} 
-              onChange={(e) => setSubject(e.target.value)} 
+              value={details.subject} 
+              id='subject'
+              name='subject'
+              onChange={handleChange} 
               className="field-input" 
               placeholder="Enter subject" 
             />
@@ -41,13 +81,15 @@ function MessageBoard() {
           <div className="message-field">
             <div className="field-label">Message</div>
             <textarea 
-              value={message} 
-              onChange={(e) => setMessage(e.target.value)} 
+              value={details.text} 
+              id='text'
+              name='text'
+              onChange={handleChange} 
               className="field-textarea" 
               placeholder="Write your message here"
             />
           </div>
-          <button onClick={handleSubmit} className="send-button">Send Email</button>
+          <button onClick={handleEmailSubmit} className="send-button">Send Email</button>
         </div>
       </div>
     </>
