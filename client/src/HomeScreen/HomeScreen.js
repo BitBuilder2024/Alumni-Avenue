@@ -78,30 +78,17 @@ function HomeScreen(){
                 <button class = "CreateGroupButton" onClick={CreateGroupRoute}>Create Group</button>
             </div>
         </div>
-        {/* <div className="homeGroups">
-            {groups && groups.map((group) => (
-                <GroupCard
-                    key={group.id}
-                    nMem={group.peopleCount}
-                    gPic={groupPic}
-                    gName={group.groupName}
-                    onClick={() => handleGroupClick(group)}
-                />
-            ))}
-            </div> */}
-
-            {/* REPLACE LATER, PLACEHOLDER FOR NOW */}
             <div className="homeGroups">
-                {sampleGroups.map((group) => (
+                {groups && groups.map((group) => (
                     <GroupCard
                         key={group.id}
                         nMem={group.peopleCount}
-                        gPic={group.groupPic}
+                        gPic={groupPic}
                         gName={group.groupName}
                         onClick={() => handleGroupClick(group)}
                     />
                 ))}
-            </div>
+            </div> 
 
         </div> 
 </div>
