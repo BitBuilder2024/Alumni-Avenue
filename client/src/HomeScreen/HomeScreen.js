@@ -74,7 +74,7 @@ function HomeScreen(){
         {currUser && (
           <ProfileCard
             uName={currUser.name}
-            uSchool={currUser.education}
+            uSchool={currUser.major}
             uJob={currUser.jobPosition}
             uClass={currUser.graduationYear}
             uPic={currUser.profilePicture}
