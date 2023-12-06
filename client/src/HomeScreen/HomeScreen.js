@@ -17,6 +17,15 @@ function HomeScreen(){
     const [userJob, serUserJob] = useState ("JOB @ COMPANY")
     // State Variables for the Group Card
 
+    // Sample data for groups
+    const sampleGroups = [
+        { id: 'group1', peopleCount: 10, groupName: 'Group One', groupPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' },
+        { id: 'group2', peopleCount: 15, groupName: 'Group Two', groupPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' },
+        { id: 'group3', peopleCount: 8, groupName: 'Group Three', groupPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' },
+        { id: 'group4', peopleCount: 20, groupName: 'Group Four', groupPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' },
+        { id: 'group5', peopleCount: 12, groupName: 'Group Five', groupPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' },
+    ];
+
     const [groupPic, setGroupPic] = useState ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png')
 
     const [groups, setGroups] = useState(null)
@@ -45,8 +54,12 @@ function HomeScreen(){
         navigate('/CreateGroupRoute');
     }
     function JoinGroupRoute(){
-        navigate(/*'/insert the path to join new group web page'*/);
+        navigate('/JoinGroup');
     }
+
+    const handleGroupClick = (group) => {
+        navigate(`/ViewGroup/${group.id}`);
+    };    
 
     return(
 <div>
@@ -61,16 +74,36 @@ function HomeScreen(){
             <div class="MyGroupsText">My Groups</div>
             {/* Box for the Buttons, so they stay together */}
             <div class = "homeGroupButtons">
-                <button class = "JoinGroupButton" /*onClick={JoinGroupRoute}*/>Join Group</button>
+                <button class = "JoinGroupButton" onClick={JoinGroupRoute}>Join Group</button>
                 <button class = "CreateGroupButton" onClick={CreateGroupRoute}>Create Group</button>
             </div>
         </div>
-        <div className = "homeGroups">
-            {groups && groups.map((group)=>(
-                <GroupCard nMem = {group.peopleCount} gPic={groupPic} gName = {group.groupName}/>
+        {/* <div className="homeGroups">
+            {groups && groups.map((group) => (
+                <GroupCard
+                    key={group.id}
+                    nMem={group.peopleCount}
+                    gPic={groupPic}
+                    gName={group.groupName}
+                    onClick={() => handleGroupClick(group)}
+                />
             ))}
-        </div>
-    </div>
+            </div> */}
+
+            {/* REPLACE LATER, PLACEHOLDER FOR NOW */}
+            <div className="homeGroups">
+                {sampleGroups.map((group) => (
+                    <GroupCard
+                        key={group.id}
+                        nMem={group.peopleCount}
+                        gPic={group.groupPic}
+                        gName={group.groupName}
+                        onClick={() => handleGroupClick(group)}
+                    />
+                ))}
+            </div>
+
+        </div> 
 </div>
     )
 }
