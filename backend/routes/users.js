@@ -5,7 +5,8 @@ const {
     getUser,
     deleteUser,
     updateUser,
-    loginUser
+    loginUser,
+    joinGroupUser
 } = require('../controllers/userController')
 const router = express.Router()
 
@@ -21,6 +22,8 @@ router.delete('/:id', deleteUser)
 router.patch('/:id', updateUser)
 //LOGIN a user
 router.post('/login',loginUser)
+//JOIN GROUP for a user
+router.post('/joinGroup/:useId/:groupId',joinGroupUser)
 
 
 module.exports = router

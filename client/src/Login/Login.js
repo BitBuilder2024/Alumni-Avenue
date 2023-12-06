@@ -21,16 +21,6 @@ const Login = () => {
     });
   };
 
-  const login = () => {
-    const { Email, Password } = user;
-    axios.post('http://localhost:9270/Login', user)
-      .then(res => toast.info(res.data.message))
-      .catch(error => {
-        console.error('Login error:', error);
-        toast.error('Failed to log in. Please try again.');
-      });
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
   
