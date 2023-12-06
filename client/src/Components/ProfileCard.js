@@ -7,7 +7,7 @@ import '.././HomeScreen/HomeScreen.css'
 function ProfileCard(props){
    return(
    <div class = "homeProfileCard">
-       <img class = "homeProfPic" src = {props.uPic} alt = "Profile Picture"/>
+            <img class = "homeProfPic" src = {props.uPic} alt = "Profile Picture"/>
        {/* Profile Info */}
        <div>
            <p>{props.uName}</p>

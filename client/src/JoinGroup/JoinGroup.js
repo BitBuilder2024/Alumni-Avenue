@@ -50,14 +50,39 @@ function JoinGroup() {
         }
     ]);
 
+    const [groups, setGroups] = useState(null)
+    useEffect(()=>{
+        const fetchGroups = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/api/groups');
+        
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error fetching groups:', errorData);
+                } else {
+                    const jsonData = await response.json();
+                    console.log('Fetched groups:', jsonData);
+                    setGroups(jsonData);
+                }
+            } catch (error) {
+                console.error('Error fetching groups:', error);
+            }
+        }
+        fetchGroups();
+    }, [])
+
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
     // REPLACE FILTER DATA WITH BACKEND COMPONENTS
-    const filteredGroups = sampleGroups.filter(group => 
+    let filteredGroups = [];
+    if (groups!= null)
+    {
+        filteredGroups = groups.filter(group => 
         group.groupName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+        );
+    }
 
     return (
         <div>
@@ -82,13 +107,13 @@ function JoinGroup() {
                             />
                         </div>
                         <div>
-                            {filteredGroups.map(group => (
+                            {filteredGroups.map(groups => (
                                 <SearchedGroup
-                                    key={group.id}
-                                    nMem={group.numMembers}
-                                    gPic={group.groupPic}
-                                    gName={group.groupName}
-                                    gDescription={group.groupDescription}
+                                    key={groups.id}
+                                    nMem={groups.peopleCount}
+                                    gPic={groups.profilePicture}
+                                    gName={groups.groupName}
+                                    gDescription={groups.groupDetails}
                                 />
                             ))}
                         </div>           
