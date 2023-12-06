@@ -71,6 +71,7 @@ const updateUser = async(req, res) => {
     res.status(200).json(user)
 
 }
+//login a user
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
   
@@ -92,11 +93,41 @@ const loginUser = async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   };
+
+const joinGroupUser = async(req,res)=>{
+    const { userId, groupId } = req.body;
+
+    try {
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        console.log(user);
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      // Check if the group is already in the user's groupsJoined array
+      if (!user.groupsJoined.includes(groupId)) {
+        // If not, add the group ID to the array
+        user.groupsJoined.push(groupId);
+  
+        // Save the changes to the user
+        await user.save();
+  
+        res.status(200).json({ message: 'Group joined successfully', user });
+      } else {
+        res.status(400).json({ error: 'User is already a member of this group' });
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 module.exports = {
     createUser,
     getUser,
     getUsers,
     deleteUser,
     updateUser,
-    loginUser
+    loginUser,
+    joinGroupUser
 }
