@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -22,6 +21,27 @@ const Signup = () => {
     groupsOwned: []
   });
 
+  const [postImage, setPostImage] = useState ({myFile:""})
+
+  const handleFileUpload = async (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const base64 = await convertToBase64(file);
+      console.log(base64);
+  
+      // Update the user state with the base64 value
+      setUser((prevUser) => ({
+        ...prevUser,
+        profilePicture: base64,
+      }));
+  
+      // Update the postImage state with the selected file
+      setPostImage({
+        myFile: file,
+      });
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -30,16 +50,25 @@ const Signup = () => {
     });
   };
 
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // You can do something with the userData object, like sending it to a server or logging it
+  
     try {
+      // Create a new user object with the base64-encoded profile picture
+      const userWithBase64 = {
+        ...user,
+        profilePicture: postImage.myFile ? await getBase64ProfilePicture(postImage.myFile) : null,
+      };
+  
+      // You can log the userWithBase64 to see the updated object
+      console.log(userWithBase64);
+  
       const response = await fetch('http://localhost:4000/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(userWithBase64),
       });
   
       if (response.ok) {
@@ -56,8 +85,14 @@ const Signup = () => {
     } catch (error) {
       console.error('Error:', error.message);
     }
-    console.log(user)
+    console.log(user);
   };
+
+  // Function to get base64-encoded profile picture
+const getBase64ProfilePicture = async (file) => {
+  return await convertToBase64(file);
+};
+
 
   return (
     <div className="signup-page">
@@ -131,7 +166,11 @@ const Signup = () => {
             name="profilePicture"
             accept="image/*"
            
-            onChange={handleChange}
+            onChange={(e) => {
+              handleFileUpload(e);
+              handleChange(e);
+            }}
+                      
             required
           />
         </div>
@@ -195,7 +234,13 @@ const Signup = () => {
             required
           />
         </div>
-        <button type="submit" style={{color:"white",backgroundColor:"blue"}} onClick={handleFormSubmit} className="btn">
+        <button type="submit" style={{color:"white",backgroundColor:"blue"}} 
+        // onClick = {handleFormSubmit}
+        onClick={(e) => {
+          // handleFileUpload(e);
+          handleFormSubmit(e);
+        }}
+         className="btn">
           Sign Up
         </button>
       </div>
@@ -204,3 +249,16 @@ const Signup = () => {
 };
 
 export default Signup;
+
+function convertToBase64(file){
+  return new Promise ((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve (fileReader.result)
+      };
+      fileReader.onerror = (error) =>{
+        reject (error)
+      }
+  })
+}

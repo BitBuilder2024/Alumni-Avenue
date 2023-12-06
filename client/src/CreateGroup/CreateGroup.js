@@ -26,11 +26,19 @@ function CreateGroup() {
     document.getElementById("fileInput").click();
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      const fileUrl = URL.createObjectURL(file);
-      setImageSrc(fileUrl);
+      const base64 = await convertToBase64(file);
+      setImageSrc(base64);
+
+      // Update the groupInfo state with the base64 value
+      setGroupInfo((prevInfo) => ({
+        ...prevInfo,
+        profilePicture: base64,
+      }));
+
+      localStorage.setItem('formData', JSON.stringify({ ...groupInfo, profilePicture: base64 }));
     }
   };
 
@@ -43,9 +51,9 @@ function CreateGroup() {
     localStorage.setItem('formData', JSON.stringify({ ...groupInfo, [name]: value }));
   };
 
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // You can do something with the userData object, like sending it to a server or logging it
+
     try {
       const response = await fetch('http://localhost:4000/api/groups', {
         method: 'POST',
@@ -54,22 +62,18 @@ function CreateGroup() {
         },
         body: JSON.stringify(groupInfo),
       });
-  
+
       if (response.ok) {
-        // User creation successful, you can handle the response here
         const responseData = await response.json();
         console.log('Group created:', responseData);
-  
-        // Optionally, you can navigate to another page or perform additional actions
         navigate('/HomeScreen');
       } else {
-        // User creation failed, handle the error
         console.error('Group creation failed:', response.statusText);
       }
     } catch (error) {
       console.error('Error:', error.message);
     }
-    console.log(groupInfo)
+    console.log(groupInfo);
   };
 
   return (
@@ -149,3 +153,16 @@ function CreateGroup() {
 }
 
 export default CreateGroup;
+
+async function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}

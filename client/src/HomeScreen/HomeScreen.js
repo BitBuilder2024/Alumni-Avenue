@@ -93,7 +93,7 @@ function HomeScreen(){
                     <GroupCard
                         key={group.id}
                         nMem={group.peopleCount}
-                        gPic={groupPic}
+                        gPic={group.profilePicture}
                         gName={group.groupName}
                         onClick={() => handleGroupClick(group)}
                     />
