@@ -81,9 +81,7 @@ const loginUser = async (req, res) => {
         return res.status(404).json({ error: 'User not found' });
       }
   
-      const isPasswordMatch = await user.comparePassword(password);
-  
-      if (!isPasswordMatch) {
+      if (user.password !== password) {
         return res.status(401).json({ error: 'Incorrect password' });
       }
   
