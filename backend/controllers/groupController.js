@@ -23,11 +23,11 @@ const getGroup = async(req,res) => {
 }
 // create a new groups
 const createGroup = async (req,res)=>{
-    const {groupName, peopleCount, peopleInGroup} = req.body
+    const {groupName, peopleCount, peopleInGroup, password, profilePicture} = req.body
 
     //add doc to db
     try {
-        const group = await Group.create({groupName, peopleCount, peopleInGroup})
+        const group = await Group.create({groupName, peopleCount, peopleInGroup, password, profilePicture})
         res.status(200).json(group)
     } catch (error) {
         res.status(400).json({error: error.message})
