@@ -47,8 +47,8 @@ const handleGroupDetailsChange = (event) => {
             <Link to="/HomeScreen">
               <button className="cancel-button">Cancel</button>
             </Link>
-
           </div>
+          
           <div className="group-card">
             <div className="image-section">
           <   div className="choose-image-section">
@@ -75,7 +75,7 @@ const handleGroupDetailsChange = (event) => {
               <div className="group-card-content">
                 <div className="group-name">Group Name</div>
                 <input
-                  type="text"
+                  type="textarea"
                   className="group-name-text"
                   placeholder="Enter text here"
                   value={groupName}
