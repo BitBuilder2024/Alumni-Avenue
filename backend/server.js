@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoutes = require('./routes/users')
 const groupRoutes = require('./routes/groups')
+const emailRoutes = require('./routes/email')
 //express app
 const app = express()
 
@@ -19,6 +20,7 @@ app.use((req, res, next)=>{
 //routes
 app.use('/api/users', userRoutes)
 app.use('/api/groups', groupRoutes)
+app.use('/api/email', emailRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONG_URI)
@@ -31,3 +33,6 @@ mongoose.connect(process.env.MONG_URI)
     .catch((error)=>{
         console.log(error)
     })
+
+
+    
