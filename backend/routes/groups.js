@@ -5,7 +5,8 @@ const {
     getGroup,
     deleteGroup,
     updateGroup,
-    addToGroup
+    addToGroup,
+    removeFromGroup
 } = require('../controllers/groupController')
 const router = express.Router()
 
@@ -21,5 +22,7 @@ router.delete('/:id', deleteGroup)
 router.patch('/:id', updateGroup)
 //add user to group
 router.patch('/:groupId/:userId',addToGroup)
+//remove user from group
+router.patch('/removeFromGroup/:groupId/:userId',removeFromGroup)
 
 module.exports = router

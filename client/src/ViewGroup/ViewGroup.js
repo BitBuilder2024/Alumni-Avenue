@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './ViewGroup.css';
 import HeadCard from "../HeadCard/HeadCard";
 import MemberCard from "../Components/MemberCard"
+import {getCurrentUserId } from '../currentUser'
 
 function ViewGroup() {
     const { groupId } = useParams();
@@ -45,6 +46,7 @@ function ViewGroup() {
     const [filterType, setFilterType] = useState('');
     const [filterInput, setFilterInput] = useState('');
 
+
     const filterMembers = (member) => {
         if (!filterInput) return true; // Show all members if filter input is empty
 
@@ -60,6 +62,57 @@ function ViewGroup() {
         return Object.values(member).some(value =>
             String(value).toLowerCase().includes(lowerCaseFilterInput)
         );
+    };
+
+    const handleLeave = async () => {
+        try {
+            const userId = getCurrentUserId();
+            //remove user from group array
+            const response = await fetch(`http://localhost:4000/api/groups/removeFromGroup/` + groupId + '/' + userId, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId,
+                    groupId,
+                }),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('User removed from group array', responseData);
+                navigate('/JoinGroup');
+            } else {
+                console.error('Failed to remove user from group array', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error leaving user for group:', error.message);
+        }
+        try {
+            const userId = getCurrentUserId();
+            //remove user from group array
+            const response = await fetch(`http://localhost:4000/api/users/leaveGroup/` + userId + '/' + groupId, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId,
+                    groupId,
+                }),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('Group removed from user array', responseData);
+                navigate('/JoinGroup');
+            } else {
+                console.error('Failed to remove group from user array', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error leaving group for user:', error.message);
+        }
     };
 
     // SAMPLE DATA FOR GROUP INFORMATION, DELETE LATER
@@ -106,7 +159,7 @@ function ViewGroup() {
                         <div className="group-members-count">{groupData.peopleCount} Members</div>
                     </div>
                     <div className="group-header-right">
-                        <button className="LeaveGroup">Leave Group</button>
+                        <button className="LeaveGroup" onClick={handleLeave}>Leave Group</button>
                         <Link to="/HomeScreen">
                             <button className="cancel-button">Home</button>
                         </Link>
