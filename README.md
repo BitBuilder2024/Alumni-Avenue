@@ -7,8 +7,10 @@ It's tailored to allow users to easily find and engage with alumni through share
 - 1.) git clone https://github.com/BitBuilder2024/Alumni-Avenue.git
 - 2.) Open a Terminal tab and "cd backend"
 - 3.) Inside of backend terminal, run "nodemon server.js"
-- 4.) Open another Terminal tab and "cd client"
-- 5.) Inside of client terminal, run "npm start"
+- 4.) Make sure you have nodemon installed, otherwise run "npm install -g nodemon"
+- 5.) Open another Terminal tab and "cd client"
+- 6.) Make sure you have npm installed, otherwise, run "npm install -g npm"
+- 7.) Inside of client terminal, run "npm start"
 
 ## Features
 - **User Authentication**: Secure login and sign-up processes with email verification.
