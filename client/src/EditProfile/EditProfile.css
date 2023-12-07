@@ -1,10 +1,35 @@
 /*EditProfile Stuff (Ryan)*/
+.epTitle{
+  margin-bottom:0%;
+  display:flex;
+  justify-content: center;
+}
+
+#epChooseImage{
+  background-color: #11a2f3;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 7.5px 10px;
+    font: 15px Inter, sans-serif;
+    font-weight: bold;
+
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+
+    width: 40%;
+    margin-bottom: 2%;
+}
+
 .ep{
     display: flex;
     justify-content: center;
   }
   
   .epCard{
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     background-color: lightgray;
     margin-top: 3%;
@@ -12,7 +37,8 @@
     border-radius: 10px;
     padding: 5%;
     padding-top: 0%;
-    width: 50%;
+    padding-bottom: 0%;
+    max-width: 50%;
   }
   
   .epTop{
@@ -22,13 +48,24 @@
   
   .submitBox{
     display:flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
   
   .submitButton{
-    background-color: #7CB9E8;
+    background-color: #11a2f3;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 20px;
+    font: 15px Inter, sans-serif;
+    font-weight: bold;
+
+    /*Button Transition*/
+    transition: transform 0.1s ease;
+    cursor: pointer;
+
     width: 50%;
-    border: 0;
+    margin-bottom: 2%;
   }
   
   
