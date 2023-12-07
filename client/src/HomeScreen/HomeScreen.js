@@ -81,7 +81,7 @@ function HomeScreen(){
     }
 
     const handleGroupClick = (group) => {
-        navigate(`/ViewGroup/${group.id}`);
+        navigate(`/ViewGroup/${group._id}`);
     };    
 
     return(

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './MessageBoard.css'; // Ensure this is the correct path to your CSS file
 import HeadCard from "../HeadCard/HeadCard";
 
 function MessageBoard() {
   const navigate = useNavigate();
-  const memberEmail = "ryanvuemail@gmail.com";
+  const location = useLocation();
+  const memberEmail = location?.state?.memberEmail || "";
 
   const [details, setDetails] = useState({
     to: memberEmail,

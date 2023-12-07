@@ -123,6 +123,41 @@ const joinGroupUser = async(req,res)=>{
     }
 };
 
+// Leave a group
+const leaveGroup = async (req, res) => {
+  const { userId, groupId } = req.body;
+
+  try {
+      // Validate user and group IDs
+      if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(groupId)) {
+          return res.status(400).json({ error: 'Invalid user or group ID' });
+      }
+
+      // Find the user by ID
+      const user = await User.findById(userId);
+
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+
+      // Check if the user is a member of the group
+      if (!user.groupsJoined.includes(groupId)) {
+          return res.status(400).json({ error: 'User is not a member of this group' });
+      }
+
+      // Remove the group ID from the user's groupsJoined array
+      user.groupsJoined = user.groupsJoined.filter(group => group !== groupId);
+
+      // Save the updated user
+      await user.save();
+
+      res.status(200).json({ message: 'User left the group successfully', user });
+  } catch (error) {
+      console.error('Error leaving group:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 const getGroupsJoined = async (req, res) => {
     const { userId } = req.params;
     try {
@@ -149,5 +184,6 @@ module.exports = {
     updateUser,
     loginUser,
     joinGroupUser,
-    getGroupsJoined
+    getGroupsJoined,
+    leaveGroup
 }
