@@ -11,6 +11,7 @@ It's tailored to allow users to easily find and engage with alumni through share
 - 5.) Open another Terminal tab and "cd client"
 - 6.) Make sure you have npm installed, otherwise, run "npm install -g npm"
 - 7.) Inside of client terminal, run "npm start"
+- 8.) If errors persist, run "npm install axios" and run "npm install react-toastify"
 
 ## Features
 - **User Authentication**: Secure login and sign-up processes with email verification.
