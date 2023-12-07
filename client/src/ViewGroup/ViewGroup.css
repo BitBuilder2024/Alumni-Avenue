@@ -12,11 +12,9 @@
     margin: 20px 0px 20px 30px;
     padding: 15px 20px;
     font: 20px Inter, sans-serif;
-    background-color: gray;
-    color: white;
   
     /*Button Transition*/
-    transition: transform 0.S1s ease;
+    transition: transform 0.1s ease;
     cursor: pointer;
 }
 .LeaveGroup:active {

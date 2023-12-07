@@ -9,7 +9,7 @@
     background-color: #11a2f3;
     width: 100%;
     padding: 25px;
-    font: 500 50px Inter, serif;
+    font: 500 50px Inter, sans-serif;
   }  
 
   /* Header */
@@ -56,11 +56,6 @@
   }
   .SignOutButton:active {
     transform: scale(0.95);
-    
-  }
-  .SignOutButton{
-    background-color: gray;
-    color: white;
   }
 
   /* ----------------------- */
