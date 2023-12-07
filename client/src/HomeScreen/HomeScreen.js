@@ -6,48 +6,71 @@ import ProfileCard from "../Components/ProfileCard";
 import HeadCard from "../HeadCard/HeadCard"
 import React from "react";
 import './HomeScreen.css';
-import { setCurrentUserId, getCurrentUserId } from '../currentUser'
+import {getCurrentUserId } from '../currentUser'
 
 function HomeScreen(){
-    const [groupPic, setGroupPic] = useState ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png')
-    const [groups, setGroups] = useState(null)
+    const [groups, setGroups] = useState([])
     const [currUser, setCurrUser] = useState(null);
-    useEffect(()=>{
+    useEffect(() => {
         const fetchCurrentUser = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/users/' + getCurrentUserId());
-        
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Error fetching current user:', errorData);
-                } else {
-                    const jsonData = await response.json();
-                    console.log('Fetched user:', jsonData);
-                    setCurrUser(jsonData);
-                }
-            } catch (error) {
-                console.error('Error fetching users:', error);
+          try {
+            const response = await fetch('http://localhost:4000/api/users/' + getCurrentUserId());
+    
+            if (!response.ok) {
+              const errorData = await response.json();
+              console.error('Error fetching current user:', errorData);
+              console.log(response);
+            } else {
+              const jsonData = await response.json();
+              console.log('Fetched user:', jsonData);
+              setCurrUser(jsonData);
             }
-        }
+          } catch (error) {
+            console.error('Error fetching users:', error);
+          }
+        };
+    
         const fetchGroups = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/groups');
-        
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Error fetching groups:', errorData);
-                } else {
-                    const jsonData = await response.json();
-                    console.log('Fetched groups:', jsonData);
-                    setGroups(jsonData);
+          try {
+            const response = await fetch(`http://localhost:4000/api/users/getGroups/${getCurrentUserId()}`);
+    
+            if (!response.ok) {
+              const errorData = await response.json();
+              console.error('Error fetching current user groups:', errorData);
+            } else {
+              const jsonData = await response.json();
+              console.log('Fetched user groups:', jsonData);
+    
+              const groupPromises = jsonData.map(async (currGroup) => {
+                try {
+                  const groupResponse = await fetch(`http://localhost:4000/api/groups/${currGroup}`);
+                  if (!groupResponse.ok) {
+                    const errorData = await groupResponse.json();
+                    console.log('Error fetching group: ', errorData);
+                    return null;
+                  } else {
+                    const groupData = await groupResponse.json();
+                    console.log('Fetched group: ', groupData);
+                    return groupData;
+                  }
+                } catch (error) {
+                  console.log('Error:', error);
+                  return null;
                 }
-            } catch (error) {
-                console.error('Error fetching groups:', error);
+              });
+    
+              const resolvedGroups = await Promise.all(groupPromises);
+              setGroups(resolvedGroups.filter(group => group !== null));
             }
-        }
+          } catch (error) {
+            console.log('Error:', error);
+          }
+        };
+    
         fetchCurrentUser();
         fetchGroups();
-    }, [])
+      }, []);
+    
 
     const navigate = useNavigate();
     function CreateGroupRoute(){
