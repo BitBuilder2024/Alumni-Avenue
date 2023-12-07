@@ -122,6 +122,25 @@ const joinGroupUser = async(req,res)=>{
       res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+const getGroupsJoined = async (req, res) => {
+    const { userId } = req.params;
+    try {
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        console.log(user);
+        return res.status(404).json({ error: 'User not found' });
+      } else {
+        res.status(200).json(user.groupsJoined);
+      }
+    } catch (error) {
+      console.log('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
+
 module.exports = {
     createUser,
     getUser,
@@ -129,5 +148,6 @@ module.exports = {
     deleteUser,
     updateUser,
     loginUser,
-    joinGroupUser
+    joinGroupUser,
+    getGroupsJoined
 }
