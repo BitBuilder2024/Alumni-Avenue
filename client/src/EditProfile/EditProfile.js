@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeadCard from "../HeadCard/HeadCard";
 import "./EditProfile.css";
-import { setCurrentUserId, getCurrentUserId } from '../currentUser'
+import { setCurrentUserId, getCurrentUserId } from '../currentUser';
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -22,11 +22,18 @@ function EditProfile() {
     document.getElementById("fileInput").click();
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const fileUrl = URL.createObjectURL(file);
       setImageSrc(fileUrl);
+
+      // Convert the image to base64
+      const base64Image = await convertToBase64(file);
+      setFormData((prevData) => ({
+        ...prevData,
+        profilePicture: base64Image,
+      }));
     }
   };
 
@@ -39,10 +46,15 @@ function EditProfile() {
   };
 
   const handleSubmit = async () => {
-    const userId = getCurrentUserId(); // Replace with the actual user ID
+    const userId = getCurrentUserId();
     console.log('User ID:', userId);
     const apiUrl = `http://localhost:4000/api/users/${userId}`;
     console.log('User ID:', apiUrl);
+
+    // Filter out empty values from formData
+    const filteredData = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value !== '')
+    );
 
     try {
       const response = await fetch(apiUrl, {
@@ -50,26 +62,19 @@ function EditProfile() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(filteredData),
       });
 
       if (response.ok) {
         const updatedUser = await response.json();
         console.log('User updated:', updatedUser);
-        // Handle success, e.g., update state or navigate to another page
         navigate('/HomeScreen');
       } else {
         console.error('Update failed:', response.statusText);
-        // Handle failure
       }
     } catch (error) {
       console.error('Error:', error.message);
-      // Handle error
     }
-  };
-
-  const HomeRoute = () => {
-    navigate('/HomeScreen');
   };
 
   return (
@@ -143,3 +148,16 @@ function EditProfile() {
 }
 
 export default EditProfile;
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}
