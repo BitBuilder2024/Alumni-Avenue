@@ -20,6 +20,15 @@ const openFileSelector = () => {
         navigate('/HomeScreen');
     }
 
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          // Create a URL for the selected file
+          const fileUrl = URL.createObjectURL(file);
+          setImageSrc(fileUrl); // Update the state with the new image URL
+        }
+      };
+
     return(
 <div>
     {/* header outside bc margins */}
@@ -34,7 +43,7 @@ const openFileSelector = () => {
                 id="fileInput"
                 style={{ display: "none" }}
                 accept="image/png, image/jpeg"
-                // onChange={handleFileChange}
+                onChange={handleFileChange}
               />
               <div className="profile-picture-container">
                 <img
