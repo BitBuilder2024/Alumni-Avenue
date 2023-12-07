@@ -10,11 +10,32 @@ function ViewGroup() {
     const [groupData, setGroupData] = useState({
         groupName: "",
         groupDetails: "",
-        groupPic: ""
+        peopleCount: 0,
+        peopleInGroup: [],
+        profilePicture: "",
+
     });
 
     const navigate = useNavigate();
-
+    useEffect(() => {
+        const fetchGroup = async () => {
+          try {
+            const response = await fetch(`http://localhost:4000/api/groups/` + groupId);
+    
+            if (!response.ok) {
+              const errorData = await response.json();
+              console.error('Error fetching group', errorData);
+            } else {
+              const jsonData = await response.json();
+              console.log('Fetched group', jsonData);
+              setGroupData(jsonData);
+            }
+          } catch (error) {
+            console.log('Error:', error);
+          }
+        };
+        fetchGroup();
+      }, []);
     //Email Functionality
     const handleMemberClick = (memberEmail) => {
         navigate('/message', { state: { memberEmail } });
@@ -74,21 +95,13 @@ function ViewGroup() {
         { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' }
     ];
 
-    useEffect(() => {
-        // REPLACE WITH FETCH FROM THE BACKEND USING 'GROUPID'
-        const group = sampleGroups.find(g => g.id === groupId);
-        if (group) {
-            setGroupData(group);
-        }
-    }, [groupId]);
-
     return (
         <>
             <HeadCard />
             <div className="view-group-container">
                 <div className="view-group-header">
                     <div className="group-info">
-                        <img src={groupData.groupPic} alt="Group" className="group-picture" />
+                        <img src={groupData.profilePicture} alt="Group" className="group-picture" />
                         <div className="group-name">{groupData.groupName}:</div>
                         <div className="group-members-count">{groupData.peopleCount} Members</div>
                     </div>
