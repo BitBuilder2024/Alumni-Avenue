@@ -3,6 +3,13 @@
 Alumni Avenue is a web application designed to enhance networking experience within student organizations by providing an intuitive platform for connecting with alumni. 
 It's tailored to allow users to easily find and engage with alumni through shared organizations, facilitating opportunities for mentorship, networking, and professional growth.
 
+#To Run the App Locally
+1.) git clone https://github.com/BitBuilder2024/Alumni-Avenue.git
+2.) Open a Terminal tab and "cd backend"
+3.) Inside of backend terminal, run "nodemon server.js"
+4.) Open another Terminal tab and "cd client"
+5.) Inside of client terminal, run "npm start"
+
 ## Features
 - **User Authentication**: Secure login and sign-up processes with email verification.
 - **Personalized Profiles:**: Custom profiles featuring education, work history, skills, and more.
