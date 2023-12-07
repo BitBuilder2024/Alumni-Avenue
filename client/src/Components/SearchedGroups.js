@@ -72,9 +72,24 @@ function SearchedGroup(props) {
     
                     if (patchResponse.ok) {
                         console.log('Group updated successfully');
+                    
+                        // Make a PATCH request to add the user ID to the group's peopleInGroup array
+                        const groupAddResponse = await fetch(`http://localhost:4000/api/groups/${props.gID}/${getCurrentUserId()}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        });
+                    
+                        if (groupAddResponse.ok) {
+                            console.log('Added to group array successfully');
+                        } else {
+                            console.error('Failed to add to group array:', groupAddResponse.statusText);
+                        }
                     } else {
                         console.error('Failed to update group:', patchResponse.statusText);
                     }
+                    
     
                     // Optionally, you can navigate to another page or perform additional actions
                     navigate('/HomeScreen');

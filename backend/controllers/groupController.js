@@ -68,10 +68,45 @@ const updateGroup = async(req, res) => {
     res.status(200).json(group)
 
 }
+//add someone to a group
+const addToGroup = async (req, res) => {
+    const { groupId, userId } = req.params;
+  
+    try {
+      // Validate group and user IDs
+      if (!mongoose.Types.ObjectId.isValid(groupId) || !mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ error: 'Invalid group or user ID' });
+      }
+  
+      // Find the group by ID
+      const group = await Group.findById(groupId);
+  
+      if (!group) {
+        return res.status(404).json({ error: 'Group not found' });
+      }
+  
+      // Check if the user is already in the group
+      if (group.peopleInGroup.includes(userId)) {
+        return res.status(400).json({ error: 'User is already in the group' });
+      }
+  
+      // Add user to the group
+      group.peopleInGroup.push(userId);
+  
+      // Save the updated group
+      const updatedGroup = await group.save();
+  
+      res.status(200).json(updatedGroup);
+    } catch (error) {
+      console.error('Error adding user to group:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
 module.exports = {
     createGroup,
     getGroup,
     getGroups,
     deleteGroup,
-    updateGroup
+    updateGroup,
+    addToGroup
 }
