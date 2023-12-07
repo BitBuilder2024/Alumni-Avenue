@@ -6,10 +6,9 @@ import ProfileCard from "../Components/ProfileCard";
 import HeadCard from "../HeadCard/HeadCard"
 import React from "react";
 import './HomeScreen.css';
-import { setCurrentUserId, getCurrentUserId } from '../currentUser'
+import {getCurrentUserId } from '../currentUser'
 
 function HomeScreen(){
-    const [groupPic, setGroupPic] = useState ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png')
     const [groups, setGroups] = useState([])
     const [currUser, setCurrUser] = useState(null);
     useEffect(() => {
