@@ -30,10 +30,6 @@ function HomeScreen(){
             <div class = "epRight">
                 <p>Major</p>
                 <input></input>
-                <p>Occupation History</p>
-                <button>+ add past occupations</button>
-                <p>Company History</p>
-                <button>+ add past companies</button>
             </div>
         </div>
         <div class = "epBottom">

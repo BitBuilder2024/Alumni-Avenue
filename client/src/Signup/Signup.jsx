@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { setCurrentUserId, getCurrentUserId } from '../currentUser'
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const Signup = () => {
         // User creation successful, you can handle the response here
         const responseData = await response.json();
         console.log('User created:', responseData);
+        setCurrentUserId(responseData._id);
   
         // Optionally, you can navigate to another page or perform additional actions
         navigate('/HomeScreen');
