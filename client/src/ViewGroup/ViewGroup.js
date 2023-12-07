@@ -18,10 +18,11 @@ function ViewGroup() {
     });
 
     const navigate = useNavigate();
+    const [membersData, setMembersData] = useState([]);
     useEffect(() => {
         const fetchGroup = async () => {
           try {
-            const response = await fetch(`http://localhost:4000/api/groups/` + groupId);
+            const response = await fetch(`http://localhost:4000/api/groups/${groupId}`);
     
             if (!response.ok) {
               const errorData = await response.json();
@@ -30,13 +31,35 @@ function ViewGroup() {
               const jsonData = await response.json();
               console.log('Fetched group', jsonData);
               setGroupData(jsonData);
+    
+              // Fetch details of each member in peopleInGroup
+              const membersPromises = jsonData.peopleInGroup.map(async (userId) => {
+                try {
+                  const userResponse = await fetch(`http://localhost:4000/api/users/${userId}`);
+                  if (!userResponse.ok) {
+                    const errorData = await userResponse.json();
+                    console.error(`Error fetching user ${userId}`, errorData);
+                    return null;
+                  } else {
+                    const userData = await userResponse.json();
+                    console.log(`Fetched user ${userId}`, userData);
+                    return userData;
+                  }
+                } catch (error) {
+                  console.error(`Error fetching user ${userId}`, error.message);
+                  return null;
+                }
+              });
+    
+              const resolvedMembers = await Promise.all(membersPromises);
+              setMembersData(resolvedMembers.filter((member) => member !== null));
             }
           } catch (error) {
             console.log('Error:', error);
           }
         };
         fetchGroup();
-      }, []);
+      }, [groupId]);
     //Email Functionality
     const handleMemberClick = (memberEmail) => {
         navigate('/message', { state: { memberEmail } });
@@ -115,39 +138,6 @@ function ViewGroup() {
         }
     };
 
-    // SAMPLE DATA FOR GROUP INFORMATION, DELETE LATER
-    const sampleGroups = [
-        { id: 'group1', peopleCount: 10, groupName: 'Group One', groupPic: 'https://via.placeholder.com/150' },
-        { id: 'group2', peopleCount: 15, groupName: 'Group Two', groupPic: 'https://via.placeholder.com/150' },
-        { id: 'group3', peopleCount: 8, groupName: 'Group Three', groupPic: 'https://via.placeholder.com/150' },
-        { id: 'group4', peopleCount: 20, groupName: 'Group Four', groupPic: 'https://via.placeholder.com/150' },
-        { id: 'group5', peopleCount: 12, groupName: 'Group Five', groupPic: 'https://via.placeholder.com/150' }
-    ];
-
-    // SAMPLE DATA FOR MEMBER INFORMATION, DELETE LATER
-    const sampleMembers = [
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com'},
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com'},
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'John Doe', classYear: '2023', position: 'Team Lead', company: 'Apple', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' },
-        { name: 'Jane Smith', classYear: '2022', position: 'Developer', company: 'Meta', profilePic: 'https://via.placeholder.com/60', email: 'poop@gmail.com' }
-    ];
-
     return (
         <>
             <HeadCard />
@@ -188,19 +178,19 @@ function ViewGroup() {
                         />
                     </div>
 
-                <div className="members-container">
-                    {sampleMembers.filter(filterMembers).map((member, index) => (
+                    <div className="members-container">
+                        {membersData.map((member, index) => (
                         <MemberCard
                             key={index}
                             onClick={() => handleMemberClick(member.email)}
                             name={member.name}
-                            classYear={member.classYear}
-                            position={member.position}
+                            classYear={member.graduationYear}
+                            position={member.jobPosition}
                             company={member.company}
-                            profilePic={member.profilePic}
+                            profilePic={member.profilePicture}
                         />
-                    ))}
-                </div>
+                        ))}
+      </div>
             </div>
         </>
     );
