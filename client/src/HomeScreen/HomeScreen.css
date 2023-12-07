@@ -109,3 +109,10 @@
     gap: 2%;
     overflow-x: auto;
 }
+ .profCardTitleName{
+  font-weight: bold;
+ }
+
+ .profCardWords{
+  font-style: italic;
+ }
